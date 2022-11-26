@@ -3,6 +3,7 @@ const app = express();
 const userRouter = require('./routes/user');
 const initialRouter = require('./routes/initial');
 const resourceRouter = require('./routes/resources')
+const bookmarkRouter = require('./routes/bookmarks')
 
 const bodyParser = require('body-parser');
 
@@ -14,8 +15,9 @@ const db = require('./db/connect');
 
 
 app.use('/user', userRouter);
-app.use('/addinitial',initialRouter)
+app.use('/init',initialRouter)
 app.use('/res',resourceRouter)
+app.use('/bookmark',bookmarkRouter)
 
 const port = 5000;
 
@@ -34,4 +36,4 @@ start()
 
 
 
-
+// 876609046

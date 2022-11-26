@@ -1,6 +1,6 @@
 const db = require('../db/connect');
 const bcrypt = require('bcryptjs')
-const initaluserData = async (req, res) => {
+const userTable = async (req, res) => {
 
     const quer1 = 'create database edxplore'
     const quer2 = 'use edxplore'
@@ -21,4 +21,12 @@ const resourceTable = async (req, res) => {
     })
 }
 
-module.exports = { initaluserData, resourceTable }
+const bookmarkTable = async (req, res) => {
+    const quer = 'create table bookmarks (bid int not null primary key, uid int not null ,rid int not null)'
+    await db.query(quer, (error) => {
+        if (error) throw error;
+        return res.status(200).json({ msg: "Table created successfully" })
+    })
+}
+
+module.exports = { userTable, resourceTable ,bookmarkTable}

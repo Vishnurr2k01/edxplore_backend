@@ -25,27 +25,28 @@ const getAllResource = async (req, res) => {
 }  
 
 const getUserResources = async (req,res)=>{
-    const {uid} = req.params
-    const quer = `select * from resources where uid = ?`
-
-    db.query(quer,[uid],(error,results)=>{
-        if(error)throw error
-        return res.status(201).json({results})
+    const {id} = req.params
+    parseInt
+    const quer = 'select * from resources where uid = ?'
+    await db.query(quer,[id],(error,results)=>{
+        if(error) throw error;
+        return res.status(200).json({data:results})
     })
+   
  }
 
 const updateResource = async (req, res) => {
     const {vote} = req.body
-    const {rid} = req.params
+    const {id} = req.params
 
-    if(vote=='up'){
+    if(vote=="up"){
         const quer = 'update resources set upvote = upvote+1 where rid = ? '
-        await db.query(quer,[rid],(error)=>{
+        await db.query(quer,[id],(error)=>{
             if(error)throw error;
             return res.status(200).json({message:'upvoted'})
         } )
     }
-    if(vote=='down'){
+    if(vote=="down"){
         const quer = 'update resources set downvote=downvote-1 where rid = ? '
         await db.query(quer,[rid],(error)=>{
             if(error)throw error;
@@ -55,5 +56,14 @@ const updateResource = async (req, res) => {
     
 }
 
-module.exports = {addResource,updateResource,getAllResource,getUserResources}
+const deleteResource = async (req,res)=>{
+    const {id} = req.params
+    const quer = 'delete from resources where rid = ?'
+    await db.query(quer,[id],(error)=>{
+        if(error)throw error;
+        return res.status(200).json({message:'deleted'})
+    })
+}
+
+module.exports = {addResource,updateResource,getAllResource,getUserResources,deleteResource}
 
