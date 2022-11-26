@@ -14,7 +14,7 @@ const initaluserData = async (req, res) => {
 }
 
 const resourceTable = async (req, res) => {
-    const quer = 'create table resources (rid int not null primary key, uid int not null ,title varchar(255) not null,category varchar(50) not null ,description varchar(255) not null , link varchar(300) not null , type varchar(255) not null , date date not null ,upvote int default 0,downvote int default 0  , FOREIGN KEY (uid) REFERENCES users(uid))'
+    const quer = 'create table resources (rid int not null primary key, uid int not null ,title varchar(255) not null,category varchar(50) not null ,description varchar(255) not null , link varchar(300) not null , type varchar(255) not null , date date not null ,upvote int default 0,downvote int default 0)'
     await db.query(quer, (error) => {
         if (error) throw error;
         return res.status(200).json({ msg: "Table created successfully" })
