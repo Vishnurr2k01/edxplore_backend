@@ -1,9 +1,9 @@
 {
   "name": "edxplore",
   "version": "1.0.0",
-  "description": "",
+  "description": "dbms mini project ",
   "main": "index.js",
-  "author": "",
+  "author": "vishnu r potti",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
